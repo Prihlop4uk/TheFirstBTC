@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Мой первый Биткоин · Kids</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div class="brand">
+        <h1>Мой первый Биткоин · <span>Kids</span></h1>
+      </div>
+      <button id="themeToggle" class="theme-toggle">🌙 Тёмная</button>
+    </div>
+    <p class="subtitle">10-недельный курс по финансовой грамотности и блокчейну для детей</p>
+  </header>
+
+  <nav id="lessons-nav" class="nav-bar"></nav>
+
+  <main id="content" class="content-card">
+    <p class="hint">📘 Выберите раздел, чтобы начать обучение</p>
+  </main>
+
+  <footer>
+    <p>© 2025 Мой первый Биткоин · Kids</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="app.js"></script>
+
+  <script>
+    // 🌙 Переключатель темы
+    const btn = document.getElementById('themeToggle');
+    btn.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      btn.textContent = document.body.classList.contains('dark') ? '☀️ Светлая' : '🌙 Тёмная';
+    });
+  </script>
+ 
+  <!-- MathJax для LaTeX (включая цвета RGB) -->
+  <script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      processEscapes: true,
+      packages: {'[+]': ['color']} // добавляем пакет "color"
+    },
+    loader: {load: ['[tex]/color']}, // загружаем модуль цвета
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</body>
+</html>
