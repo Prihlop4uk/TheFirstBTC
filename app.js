@@ -22,33 +22,26 @@ const files = [
   "25.Почему-важно-знать-о-Биткойне.md"
 ];
 
-// --- Генерация кнопок навигации с чистыми названиями и нумерацией ---
+// === Генерация кнопок навигации ===
 const nav = document.getElementById("lessons-nav");
 files.forEach((name, index) => {
   const btn = document.createElement("button");
 
-  // Убираем цифры и расширение .md из имени файла
   const cleanName = name.replace(/^\d+\./, "").replace(".md", "");
-
-  // Заменяем дефисы на пробелы
   const title = cleanName.replace(/-/g, " ").trim();
 
-  // Добавляем порядковый номер
   btn.textContent = `${index + 1}. ${title}`;
-
-  // Действие при клике
   btn.onclick = () => loadLesson(name);
 
   nav.appendChild(btn);
 });
-
 
 // === Подключаем markdown-парсер ===
 const script = document.createElement("script");
 script.src = "https://cdn.jsdelivr.net/npm/marked/marked.min.js";
 script.onload = () => {
   console.log("✅ marked.js загружен");
-  loadLesson(files[0]); // загружаем первую главу
+  loadLesson(files[0]); // автоматически загружаем первую главу
 };
 document.head.appendChild(script);
 
@@ -58,34 +51,27 @@ async function loadLesson(filename) {
   contentDiv.innerHTML = `<p>Загрузка: ${filename}...</p>`;
 
   try {
-    // --- Загрузка Markdown-файла ---
     const url = basePath + encodeURIComponent(filename).replace(/%2F/g, "/");
     const res = await fetch(url);
     if (!res.ok) throw new Error(res.statusText);
     let text = await res.text();
 
-    // --- Исправляем пути в Markdown-изображениях ---
+    // --- Исправление путей изображений ---
     text = text.replace(/!\[([^\]]*)\]\((?!https?:\/\/)([^)]+)\)/g,
       (match, alt, src) => {
         const cleanSrc = src.trim().replace(/^["']|["']$/g, "");
         return `![${alt}](${imageBase}${cleanSrc})`;
       });
 
-    // --- Исправляем пути в HTML-тегах <img> ---
     text = text.replace(/<img([^>]+)src=["']([^"']+)["']/gi,
       (match, attrs, src) => {
         let cleanSrc = src.trim().replace(/^["']|["']$/g, "");
-
-        // убираем лишний ../files/... из начала
         cleanSrc = cleanSrc.replace("../files/2023/Веб-версия Диплома/", "");
-
-        // исправляем старые названия
         cleanSrc = cleanSrc
           .replace(/^Изображения\/Images\//, "Изображения/")
           .replace(/^Images\//, "Изображения/")
           .replace("Chapter-", "Глава-");
 
-        // если путь не абсолютный и не внешний
         let fullSrc = cleanSrc;
         if (!cleanSrc.startsWith("http") && !cleanSrc.startsWith("data:")) {
           fullSrc = imageBase + cleanSrc.replace(/^Изображения\//, "");
@@ -95,12 +81,12 @@ async function loadLesson(filename) {
         return `<img${attrs}src="${fullSrc}"`;
       });
 
-    // --- Эмулируем LaTeX-цвет через HTML ---
+    // --- Поддержка цветных LaTeX-меток ---
     text = text.replace(
       /\$\\color\[RGB\]\{(\d+),(\d+),(\d+)\}([^$]+)\$/g,
-      (m, r, g, b, inner) => `<span style="color: rgb(${r},${g},${b}); font-weight:600;">${inner.trim()}</span>`
+      (m, r, g, b, inner) =>
+        `<span style="color: rgb(${r},${g},${b}); font-weight:600;">${inner.trim()}</span>`
     );
-
 
     // --- Настройки Markdown ---
     marked.setOptions({
@@ -109,10 +95,8 @@ async function loadLesson(filename) {
       breaks: false,
     });
 
-    // --- Рендер Markdown ---
     contentDiv.innerHTML = marked.parse(text);
 
-    // --- MathJax обработка ---
     if (window.MathJax) {
       MathJax.typesetPromise();
     }
@@ -123,3 +107,50 @@ async function loadLesson(filename) {
       <pre>Error: ${err.message}</pre>`;
   }
 }
+
+// === Плавная прокрутка к навигации ===
+document.querySelector(".primary")?.addEventListener("click", () => {
+  const target = document.getElementById("lessons-nav");
+  if (!target) return;
+
+  const startY = window.scrollY;
+  const targetY = target.getBoundingClientRect().top + window.scrollY - 15;
+  const distance = targetY - startY;
+  const duration = 800;
+  let startTime = null;
+
+  function animateScroll(currentTime) {
+    if (!startTime) startTime = currentTime;
+    const timeElapsed = currentTime - startTime;
+    const progress = Math.min(timeElapsed / duration, 1);
+    const ease = 0.5 * (1 - Math.cos(Math.PI * progress));
+    window.scrollTo(0, startY + distance * ease);
+    if (progress < 1) requestAnimationFrame(animateScroll);
+  }
+
+  requestAnimationFrame(animateScroll);
+});
+
+// === Переключение тёмной темы ===
+const themeToggle = document.querySelector(".theme-toggle");
+const body = document.body;
+
+if (localStorage.getItem("theme") === "dark") {
+  body.classList.add("dark");
+  themeToggle.innerHTML = "🌞 Светлая";
+} else {
+  body.classList.remove("dark");
+  themeToggle.innerHTML = "🌙 Тёмная";
+}
+
+themeToggle.addEventListener("click", () => {
+  const isDark = body.classList.toggle("dark");
+
+  if (isDark) {
+    localStorage.setItem("theme", "dark");
+    themeToggle.innerHTML = "🌞 Светлая";
+  } else {
+    localStorage.setItem("theme", "light");
+    themeToggle.innerHTML = "🌙 Тёмная";
+  }
+});
