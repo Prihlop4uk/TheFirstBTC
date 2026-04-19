@@ -3,52 +3,359 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Мой первый Биткоин · Kids</title>
+  <title>Мой первый Биткоин Kids</title>
+  <meta name="description" content="10-недельный курс для детей 9–16 лет: деньги, финансовая грамотность, биткойн и Lightning — через игры, эксперименты и мини‑проекты." />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
-    <div class="logo-block">
-      <div class="logo">₿</div>
-      <div>
-        <h1>Мой первый Биткоин · <span class="kids">Kids</span></h1>
-        <p>Финансовое образование нового поколения</p>
+    <div class="header-inner">
+      <div class="logo-block">
+        <div class="logo">₿</div>
+        <div>
+          <h1>Мой первый Биткоин <span class="kids">Kids</span></h1>
+          <p>Образование нового поколения</p>
+        </div>
       </div>
+      <nav class="top-nav" aria-label="Навигация">
+        <a href="#about" data-scroll-to="about">О курсе</a>
+        <a href="#program" data-scroll-to="program">Программа</a>
+        <a href="#format" data-scroll-to="format">Формат</a>
+        <a href="#faq" data-scroll-to="faq">FAQ</a>
+      </nav>
+      <button id="theme-toggle" class="theme-toggle">🌙 Тёмная</button>
     </div>
-    <button id="theme-toggle" class="theme-toggle">🌙 Тёмная</button>
   </header>
 
-  <main class="hero">
-    <div class="hero-text">
-      <h2>Финансовая грамотность и блокчейн <span class="highlight">для детей</span></h2>
-      <p class="description">
-        10-недельный курс от «что такое деньги?» до первых Lightning-платежей.
-        Простыми словами, через игры, мини-проекты и эксперименты.
-      </p>
-      <div class="buttons">
-        <button class="primary">Смотреть программу</button>
-        <button class="secondary">Записаться на пробный урок</button>
+  <main class="hero" id="about">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <h2>Финансовая грамотность и Биткойн <span class="highlight">для детей</span></h2>
+        <p class="description">
+          От «что такое деньги?» до первых Lightning‑платежей — через игры, эксперименты и мини‑проекты.
+        </p>
+        <div class="hero-metrics" aria-label="Ключевые факты">
+          <div class="metric">
+            <div class="metric-value">10</div>
+            <div class="metric-label">недель</div>
+          </div>
+          <div class="metric">
+            <div class="metric-value">Lightning</div>
+            <div class="metric-label">практика</div>
+          </div>
+          <div class="metric">
+            <div class="metric-value">9–16</div>
+            <div class="metric-label">лет</div>
+          </div>
+        </div>
+        <div class="buttons hero-actions">
+          <a class="primary wide-cta" href="#program" data-scroll-to="program">Смотреть программу</a>
+        </div>
+        <ul class="features">
+          <li><span class="satoshi-icon" aria-hidden="true">₿</span>Понимание денег и критическое мышление</li>
+          <li><span class="satoshi-icon" aria-hidden="true">₿</span>Цифровая безопасность и ответственность</li>
+          <li><span class="satoshi-icon" aria-hidden="true">₿</span>Практика на каждом занятии</li>
+        </ul>
       </div>
-      <ul class="features">
-        <li>Возраст: 9–16 лет</li>
-        <li>Формат: онлайн / офлайн</li>
-        <li>Бонус: глоссарий и плакаты по темам</li>
-      </ul>
-    </div>
-    <div class="hero-image">
-      <img src="img/assistant.png" alt="Помощник Сатоши">
+      <div class="hero-image">
+        <div class="assistant-wrap">
+          <div class="assistant-bubble" role="note" aria-label="Реплика Сатоши">
+            <div class="assistant-bubble-name">Сатоши</div>
+            <div class="assistant-bubble-text">Привет! Разберёмся с деньгами и Биткоином.</div>
+          </div>
+          <img src="img/assistant.png" alt="Сатоши">
+        </div>
+      </div>
     </div>
   </main>
 
-  <section class="content-section">
-    <nav id="lessons-nav"></nav>
-    <div id="content">
-      <p>Выберите раздел, чтобы начать обучение.</p>
+  <section class="section satoshi-section" aria-label="С кем ребёнок будет учиться">
+    <div class="section-inner">
+      <div class="satoshi-card">
+        <div class="satoshi-card-media" aria-hidden="true">
+          <div class="satoshi-avatar">₿</div>
+        </div>
+        <div class="satoshi-card-body">
+          <h3>С кем ребёнок будет учиться</h3>
+          <p class="muted">Сатоши — дружелюбный помощник курса, который переводит сложные темы на понятный язык.</p>
+          <ul class="satoshi-lines">
+            <li>Я задаю простые вопросы про деньги и помогу найти ответы.</li>
+            <li>Я покажу, как устроен Биткойн и почему это важно.</li>
+            <li>Я напомню про безопасность в интернете и в кошельках.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <h3>Что ребёнок унесёт с собой</h3>
+      <div class="cards">
+        <div class="card">
+          <h4><span class="satoshi-icon" aria-hidden="true">₿</span>Понимание денег</h4>
+          <p>Что такое деньги, почему они работают и где ломаются.</p>
+        </div>
+        <div class="card">
+          <h4><span class="satoshi-icon" aria-hidden="true">₿</span>Навыки безопасности</h4>
+          <p>Приватность, мошенничество, цифровая гигиена и ответственность.</p>
+        </div>
+        <div class="card">
+          <h4><span class="satoshi-icon" aria-hidden="true">₿</span>Практика</h4>
+          <p>Игры, примеры из жизни, мини‑проекты и понятный язык.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section" id="program">
+    <div class="section-inner">
+      <h3>Программа курса</h3>
+      <p class="muted">
+        Краткий план на 10 недель.
+      </p>
+      <div class="syllabus" aria-label="План курса">
+        <details class="syllabus-item">
+          <summary class="syllabus-summary">
+            <div class="syllabus-title">Неделя 1 — Деньги и ценность</div>
+            <div class="syllabus-meta">
+              <span class="pill">критическое мышление</span>
+            </div>
+          </summary>
+          <div class="syllabus-details">
+            <ul>
+              <li>Что такое ценность и почему люди обмениваются.</li>
+              <li>Какие задачи решают деньги и где они “ломаются”.</li>
+              <li>Мини‑практика: ценность vs цена, примеры из жизни.</li>
+            </ul>
+          </div>
+        </details>
+        <details class="syllabus-item">
+          <summary class="syllabus-summary">
+            <div class="syllabus-title">Неделя 2 — От бартера к современным деньгам</div>
+            <div class="syllabus-meta">
+              <span class="pill">история</span>
+            </div>
+          </summary>
+          <div class="syllabus-details">
+            <ul>
+              <li>Почему бартер неудобен и как появляются “универсальные” деньги.</li>
+              <li>Ракушки, золото, бумага, карты и смартфоны — эволюция.</li>
+              <li>Игра: “какие деньги лучше” по свойствам.</li>
+            </ul>
+          </div>
+        </details>
+        <details class="syllabus-item">
+          <summary class="syllabus-summary">
+            <div class="syllabus-title">Неделя 3 — Инфляция и тёмная сторона фиата</div>
+            <div class="syllabus-meta">
+              <span class="pill">практика</span>
+            </div>
+          </summary>
+          <div class="syllabus-details">
+            <ul>
+              <li>Что такое инфляция и почему “цены растут”.</li>
+              <li>Почему печать денег меняет правила игры.</li>
+              <li>Мини‑практика: инфляционная игра и выводы.</li>
+            </ul>
+          </div>
+        </details>
+        <details class="syllabus-item">
+          <summary class="syllabus-summary">
+            <div class="syllabus-title">Неделя 4 — Децентрализация и будущее денег</div>
+            <div class="syllabus-meta">
+              <span class="pill">сообщества</span>
+            </div>
+          </summary>
+          <div class="syllabus-details">
+            <ul>
+              <li>Централизация vs децентрализация: где плюсы и риски.</li>
+              <li>Как доверять без “главного”: правила, проверка, консенсус.</li>
+              <li>Примеры из интернета и повседневной жизни.</li>
+            </ul>
+          </div>
+        </details>
+        <details class="syllabus-item">
+          <summary class="syllabus-summary">
+            <div class="syllabus-title">Неделя 5 — Введение в Биткойн</div>
+            <div class="syllabus-meta">
+              <span class="pill">основы</span>
+            </div>
+          </summary>
+          <div class="syllabus-details">
+            <ul>
+              <li>Что такое Биткойн и почему у него ограниченное предложение.</li>
+              <li>Блоки, цепочка и “правила сети” простым языком.</li>
+              <li>Разбор мифов: “монеты”, “счета” и что реально хранится.</li>
+            </ul>
+          </div>
+        </details>
+        <details class="syllabus-item">
+          <summary class="syllabus-summary">
+            <div class="syllabus-title">Неделя 6 — Кошельки и самостоятельное хранение</div>
+            <div class="syllabus-meta">
+              <span class="pill">безопасность</span>
+            </div>
+          </summary>
+          <div class="syllabus-details">
+            <ul>
+              <li>Кошелёк: адреса, ключи и сид‑фраза без страшилок.</li>
+              <li>Горячие и холодные кошельки: когда какой нужен.</li>
+              <li>Практика: правила хранения и типичные ошибки.</li>
+            </ul>
+          </div>
+        </details>
+        <details class="syllabus-item">
+          <summary class="syllabus-summary">
+            <div class="syllabus-title">Неделя 7 — Как работает Биткойн (UTXO, mempool)</div>
+            <div class="syllabus-meta">
+              <span class="pill">технологии</span>
+            </div>
+          </summary>
+          <div class="syllabus-details">
+            <ul>
+              <li>Транзакции и подтверждения: что происходит “под капотом”.</li>
+              <li>Mempool и комиссии: почему иногда приходится ждать.</li>
+              <li>UTXO на пальцах: “сдача” и входы/выходы.</li>
+            </ul>
+          </div>
+        </details>
+        <details class="syllabus-item">
+          <summary class="syllabus-summary">
+            <div class="syllabus-title">Неделя 8 — Майнинг и безопасность сети</div>
+            <div class="syllabus-meta">
+              <span class="pill">экономика</span>
+            </div>
+          </summary>
+          <div class="syllabus-details">
+            <ul>
+              <li>Что такое майнинг и почему он защищает правила сети.</li>
+              <li>Сложность, хешрейт и “почему не взломать”.</li>
+              <li>Дискуссия: энергия, стимулы и честная игра.</li>
+            </ul>
+          </div>
+        </details>
+        <details class="syllabus-item">
+          <summary class="syllabus-summary">
+            <div class="syllabus-title">Неделя 9 — Риски, угрозы и цифровая гигиена</div>
+            <div class="syllabus-meta">
+              <span class="pill">практика</span>
+            </div>
+          </summary>
+          <div class="syllabus-details">
+            <ul>
+              <li>Фишинг, мошенники и “слишком хорошие предложения”.</li>
+              <li>Приватность: что можно публиковать и что нельзя.</li>
+              <li>Чек‑лист безопасности для телефона и кошельков.</li>
+            </ul>
+          </div>
+        </details>
+        <details class="syllabus-item">
+          <summary class="syllabus-summary">
+            <div class="syllabus-title">Неделя 10 — Итоги и мини‑проект</div>
+            <div class="syllabus-meta">
+              <span class="pill">проект</span>
+            </div>
+          </summary>
+          <div class="syllabus-details">
+            <ul>
+              <li>Повторяем ключевые идеи курса простыми словами.</li>
+              <li>Мини‑проект: объяснить тему через историю/презентацию/постер.</li>
+              <li>Навык: как задавать вопросы и проверять факты дальше.</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+      <div class="buttons">
+        <a class="primary" href="#signup" data-scroll-to="signup">Получить доступ</a>
+        <a class="secondary" href="#faq" data-scroll-to="faq">Что внутри курса</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="format">
+    <div class="section-inner">
+      <h3>Формат</h3>
+      <div class="cards">
+        <div class="card">
+          <h4>10 недель</h4>
+          <p>Понятный ритм и постепенное усложнение, без перегруза.</p>
+        </div>
+        <div class="card">
+          <h4>Практика на каждом занятии</h4>
+          <p>Задания, обсуждения и безопасные эксперименты.</p>
+        </div>
+        <div class="card">
+          <h4>Онлайн / офлайн</h4>
+          <p>Подстроимся под группу и формат, который вам удобен.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section cta-section" id="signup">
+    <div class="section-inner">
+      <h3>Запись на курс</h3>
+      <p class="muted">
+        Добавьте сюда ссылку на форму заявки (Google Form / Tally / Typeform) или контакты менеджера.
+      </p>
+      <div class="buttons">
+        <a class="primary" href="#program" data-scroll-to="program">Посмотреть программу</a>
+        <a class="secondary" href="disclaimer.html">Ознакомиться с отказом от ответственности</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq">
+    <div class="section-inner">
+      <h3>FAQ</h3>
+      <div class="faq">
+        <details>
+          <summary>Это не “инвестиции” и не призыв покупать Биткоин?</summary>
+          <p>Нет. Курс про финансовую грамотность, критическое мышление, устройство денег и базовые принципы Биткоина и Lightning как технологии. Мы не даём инвестсоветов и не учим “как заработать”.</p>
+        </details>
+        <details>
+          <summary>Ребёнка не втянут в мошенничество, скамы или пирамиды?</summary>
+          <p>Мы как раз учим распознавать манипуляции: “гарантированный доход”, “срочно переведи”, фишинг, поддельные сайты и кошельки. Дети получают понятный чек‑лист цифровой безопасности.</p>
+        </details>
+        <details>
+          <summary>Это законно в РФ? Не учите обходить закон?</summary>
+          <p>Курс образовательный. Мы объясняем правила и ограничения, проговариваем ответственность и важность соблюдения законодательства. Никаких схем обхода и призывов к незаконным действиям.</p>
+        </details>
+        <details>
+          <summary>А если ребёнок потеряет деньги из‑за кошельков или сид‑фраз?</summary>
+          <p>На курсе нет требований переводить реальные деньги. Практика строится на безопасных упражнениях и правилах хранения данных. Наша цель — снизить риск ошибок, а не подталкивать к операциям.</p>
+        </details>
+        <details>
+          <summary>Биткоин волатильный — это не вызовет азарт?</summary>
+          <p>Мы разделяем технологию, деньги и цену на рынке. Обсуждаем риски, эмоции и когнитивные ловушки (FOMO, стадный эффект), чтобы формировалось спокойное отношение и критическое мышление.</p>
+        </details>
+        <details>
+          <summary>Не рано ли 9–16 лет? Будет слишком сложно?</summary>
+          <p>Материал подаётся через примеры из жизни, игры и мини‑проекты. Сложные слова переводим на простой язык. Никаких предварительных знаний не требуется.</p>
+        </details>
+        <details>
+          <summary>Это не “идеология” и не пропаганда?</summary>
+          <p>Мы не навязываем точку зрения. Даём разные взгляды на деньги и технологии, учим задавать вопросы, проверять источники и делать собственные выводы.</p>
+        </details>
+        <details>
+          <summary>Сколько экранного времени и “технарщины”?</summary>
+          <p>Фокус не на сидении за компьютером, а на понимании и обсуждении. Практики короткие и безопасные: кейсы, задания на логику, моделирование ситуаций, мини‑проекты.</p>
+        </details>
+        <details>
+          <summary>Кто ведёт курс и можно ли доверять?</summary>
+          <p>Мы заранее описываем цели, формат, правила безопасности и то, чего курс не делает. Программа по неделям и примеры заданий доступны для ознакомления.</p>
+        </details>
+        <details>
+          <summary>Что ребёнок получит на выходе, кроме слова “биткоин”?</summary>
+          <p>Навыки, полезные в жизни: понимание денег и ценности, защита от мошенников, основы цифровой гигиены, умение проверять информацию и ответственное принятие решений.</p>
+        </details>
+      </div>
     </div>
   </section>
 
   <footer>
-    © 2025 Мой первый Биткоин · Kids
+    © 2026 Мой первый Биткоин Kids | <a href="disclaimer.html" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">Отказ от ответственности</a>
   </footer>
 
   <script src="app.js"></script>
