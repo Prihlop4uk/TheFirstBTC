@@ -54,7 +54,7 @@ form?.addEventListener('submit', async (e) => {
   submitBtn.disabled = true;
   submitBtn.textContent = 'Отправляем…';
   try {
-    const res = await fetch('/api/leads', {
+    const res = await fetch('send.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, contact, age, website }),

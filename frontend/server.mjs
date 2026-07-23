@@ -110,6 +110,12 @@ const server = http.createServer(async (req, res) => {
   try {
     const urlPath = decodeURIComponent((req.url || '/').split('?')[0]);
     if (isApiPath(urlPath)) return proxyApi(req, res);
+    // On Emergent preview there is no PHP; route the form POST to the FastAPI backend
+    // so the same frontend code works both here and on a PHP host (Timeweb).
+    if (urlPath === '/send.php' && req.method === 'POST') {
+      req.url = '/api/leads';
+      return proxyApi(req, res);
+    }
     await serveStatic(res, urlPath);
   } catch (e) {
     sendText(res, SERVER_ERROR_STATUS, 'Server error: ' + e.message);

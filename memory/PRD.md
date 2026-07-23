@@ -44,3 +44,9 @@ Parents enrolling a child (9–16) into a 10-week financial-literacy + Bitcoin/L
 
 ## Deployment / Domain
 - User wants custom domain. Emergent: Deploy (50 credits/month, paid sub) then attach custom domain via Entri (DNS). Handled via support_agent.
+- User chose to self-host on Timeweb (PHP 8.2). Added a PHP lead handler so the form works without Python/Mongo/Redis:
+  - `/app/frontend/public/send.php` — receives form POST, honeypot, file-based rate-limit (5/600s), sends to Telegram via cURL; reads creds from `config.php`.
+  - `/app/frontend/public/config.sample.php` — template; user creates `config.php` on server with real TELEGRAM_TOKEN/CHAT_ID.
+  - `/app/frontend/public/.gitignore` — excludes config.php (secret) from Git.
+  - `main.js` now posts to relative `send.php`. Emergent Node `server.mjs` proxies `POST /send.php` → backend `/api/leads`, so the SAME frontend works on both Emergent and Timeweb.
+- Timeweb deploy: Save to GitHub → SSH clone → copy `frontend/public/*` into site docroot → create `config.php` from sample.
