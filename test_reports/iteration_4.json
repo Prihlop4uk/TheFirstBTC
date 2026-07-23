@@ -1,0 +1,30 @@
+{
+  "summary": "Regression verification after (a) server.mjs refactor (constants + helper split + IS_PROD startup log guard) and (b) backend pytest split into typed functions. All 8 pytest tests pass (2.06s). Static site loads at / (200), missing asset -> 404, path traversal (via --path-as-is) blocked at the edge (400), and all 6 legal pages return 200 (disclaimer/privacy/offer/refunds/cookies/consent). API proxy through the Node static server works: /api/health returns 200 with {status:'ok', telegram_configured:true, redis_connected:true}. Honeypot verified: POST /api/leads with website='http://spam.com' returned 200 but was NOT persisted (list count 3 -> 3). Rate-limit verified: rapid POSTs from the shared egress IP hit HTTP 429 within a few requests; flushed rl:leads:* keys in Redis before UI test to avoid false-negative on the create flow. UI regression: real Chromium against preview URL — filled lead-name-input + lead-contact-input, clicked lead-submit, success-toast got .show class, GET /api/leads count grew 3 -> 4.",
+  "backend_issues": { "critical": [], "minor": [] },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_leads_api.py",
+    "/app/test_reports/pytest/pytest_results.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "server.mjs refactor is clean: HTTP-status constants (OK/FORBIDDEN/NOT_FOUND/SERVER_ERROR/BACKEND_ERROR) replace magic numbers; isApiPath/proxyApi/resolveFilePath/serveStatic/sendText each do one thing; startup console.log correctly gated behind !IS_PROD.",
+    "resolveFilePath enforces filePath.startsWith(ROOT) before any FS access — traversal is blocked even before Cloudflare gets involved. Verified: any escape path returns { forbidden: true } -> 403.",
+    "SPA fallback for extensionless routes still returns index.html and 200, which matches the previous behavior — no regression for direct HTML links.",
+    "proxyApi guard 'urlPath === /api || urlPath.startsWith(/api/)' prevents index.html from ever being served for API routes.",
+    "backend/server.py unchanged and behaves as before: honeypot returns 200 without persisting; rate-limiter uses Redis INCR + EXPIRE with in-memory fallback and correctly triggers at >5/600s per IP; _client_ip prefers x-forwarded-for first hop; 'redis_client is not None' is intentionally idiomatic and left as-is.",
+    "test_leads_api.py refactor into _create_lead/_count_leads helpers + one-purpose typed test functions is a clear win — 8 focused tests, all green in 2.06s."
+  ],
+  "updated_files": [],
+  "success_rate": { "backend": "100% (8/8 pytest)", "frontend": "100% (static routes + API proxy + lead-form UI submit)" },
+  "test_credentials": "N/A — no auth in this app",
+  "seed_data_creation": "pytest inserted 3 TEST_Родитель leads; UI Playwright test inserted 1 TEST_UI_<ts> lead into the 'leads' MongoDB collection.",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Rate-limit is 5/600s per IP, Redis-backed at redis://127.0.0.1:6379/0. If UI create-lead 429s during a shared-egress-IP run, flush before retesting: `redis-cli -u redis://127.0.0.1:6379/0 --scan --pattern 'rl:leads:*' | xargs -r redis-cli -u redis://127.0.0.1:6379/0 DEL`. For path-traversal verification, use `curl --path-as-is` — otherwise curl normalizes the URL client-side. Frontend Node server auto-proxies /api/* to backend (BACKEND_URL env), so /api calls from the browser origin work as expected.",
+  "rca of the issue": "No regression. Refactor is behavior-preserving on both sides."
+}

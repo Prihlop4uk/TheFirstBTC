@@ -1,0 +1,118 @@
+{
+  "typography": {
+    "headings": {
+      "family": "Unbounded",
+      "styles": ["font-black", "font-bold", "font-medium"],
+      "tracking": "tracking-tight",
+      "notes": "Unbounded is a distinctive, wide geometric font that supports Cyrillic beautifully. It bridges the 'Web3/Tech' concept with playful, approachable geometry perfect for kids and parents. Never use Inter for headings."
+    },
+    "body": {
+      "family": "Manrope",
+      "styles": ["font-normal", "font-medium"],
+      "tracking": "tracking-normal",
+      "notes": "Crisp, highly readable, and trustworthy. Excellent Cyrillic support. Use for all paragraphs, forms, and UI text."
+    },
+    "hierarchy": {
+      "h1": "text-4xl sm:text-5xl lg:text-6xl font-black leading-tight",
+      "h2": "text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight",
+      "h3": "text-2xl sm:text-3xl font-bold",
+      "body_large": "text-lg sm:text-xl text-stone-600",
+      "body_base": "text-base text-stone-600",
+      "labels": "text-sm uppercase tracking-[0.2em] font-bold text-stone-500"
+    }
+  },
+  "colors": {
+    "archetype": "Archetype 6 (Vibrant Play) + Archetype 1 (Organic/Earthy)",
+    "palette": {
+      "background": "bg-stone-50",
+      "surface": "bg-white",
+      "text_main": "text-stone-900",
+      "text_muted": "text-stone-500",
+      "primary": "bg-orange-500",
+      "primary_hover": "hover:bg-orange-600",
+      "primary_text": "text-white",
+      "accents": [
+        "bg-amber-100", 
+        "bg-emerald-100", 
+        "bg-sky-100",
+        "bg-rose-100"
+      ]
+    },
+    "rules": {
+      "gradients": "BANNED. Use flat, vibrant colors.",
+      "contrast": "Always ensure text on accent colors has sufficient contrast (e.g., text-stone-900 on bg-amber-100).",
+      "dark_mode": "For this specific educational landing page targeting parents, LIGHT THEME ONLY is preferred to convey safety, transparency, and a 'classroom' feel."
+    }
+  },
+  "visual_enhancers": {
+    "corners": "rounded-[2rem] or rounded-[3rem] for main bento cards and hero images. rounded-full for buttons and badges.",
+    "borders": "1px solid border-stone-200 for definition on light cards.",
+    "shadows": "Ambient, diffuse shadows only (e.g., shadow-xl shadow-orange-500/10) for CTAs. No harsh drop shadows.",
+    "textures": "Subtle grain overlay (bg-noise) on the hero section to make it feel tactile (like a Montessori classroom).",
+    "marquee": "Use a slow-moving editorial ribbon with tech/learning keywords (e.g., 'Bitcoin • Lightning • Финансовая грамотность • Безопасность') separated by stars/dots, placed between sections."
+  },
+  "grids_and_layouts": {
+    "hero": "Two-column asymmetrical. Left: 60% width with H1, Subtext, CTAs, and trust badges. Right: 40% width with the floating 'Satoshi' robot mascot or kids learning image. Huge padding (py-24 or py-32).",
+    "bento_benefits": "Mode A 'Tetris' Grid. 12-column grid. Mix spanning (e.g., one large card spanning 8 cols, two smaller cards spanning 4 cols). Use different accent background colors (bg-amber-100, bg-sky-100) for each bento card.",
+    "timeline_syllabus": "Vertical layout. Use customized Shadcn Accordion for the 10-week program so parents can expand to read details. Generous padding inside accordion content.",
+    "spacing_scale": "Exaggerated spacing. gap-8 to gap-12 in grids. py-24 between major sections."
+  },
+  "component_patterns": {
+    "cta_buttons": "Pill-shaped (rounded-full). Massive hit area (px-8 py-4, text-lg). Energetic hover state (-translate-y-1, shadow-lg).",
+    "cards": "Flat background, soft large radius (rounded-3xl), 1px border, massive internal padding (p-8 to p-12).",
+    "lead_form": "Minimal, high-trust. Input fields should be large (h-14, rounded-2xl, bg-stone-100, border-none). Wrap in a pristine white card with soft shadow.",
+    "icons": "Use Lucide-React. Scale them up (w-10 h-10 or w-12 h-12) and place them in rounded-full soft-colored wrappers (e.g., bg-orange-100 text-orange-600)."
+  },
+  "motion": {
+    "library": "framer-motion",
+    "hero_mascot": "Slow, continuous floating effect using y: [0, -15, 0] with a duration of 4s easeInOut loop.",
+    "scroll_reveal": "Staggered fade-up for Bento Grid items and Timeline items (initial opacity-0, y-10).",
+    "hover_states": "Cards should have a subtle scale-up (scale: 1.02) and button lifts (-translate-y-1)."
+  },
+  "image_urls": [
+    {
+      "url": "https://images.pexels.com/photos/36847299/pexels-photo-36847299.png?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "category": "mascot",
+      "description": "Cute yellow 3D robot 'Satoshi' mascot on orange background. Use in Hero section or alongside the lead form."
+    },
+    {
+      "url": "https://images.pexels.com/photos/4145069/pexels-photo-4145069.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "category": "hero_learning",
+      "description": "Happy kid using a tablet. Good for 'Format' or secondary hero visual."
+    },
+    {
+      "url": "https://images.unsplash.com/photo-1758687126783-ea42f92dad72?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHwyfHxmYXRoZXIlMjBhbmQlMjBzb24lMjBzdHVkeWluZyUyMHNtaWxpbmd8ZW58MHx8fHwxNzg0Nzk2MDY3fDA&ixlib=rb-4.1.0&q=85",
+      "category": "parent_trust",
+      "description": "Father and son studying together. Use in the FAQ or Trust/Parent section."
+    },
+    {
+      "url": "https://images.pexels.com/photos/11114830/pexels-photo-11114830.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "category": "benefits",
+      "description": "Child putting coin into a sleek blue piggy bank. Great for the 'Financial Literacy' bento card."
+    }
+  ],
+  "accessibility": {
+    "contrast": "Ensure text over accent backgrounds (like bg-orange-500) is pure white or near-black for APCA/WCAG AA compliance.",
+    "touch_targets": "All buttons, accordion headers, and form inputs must be at least 44px (h-11) tall.",
+    "focus": "Use focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 on all interactive elements.",
+    "data_testid": "MANDATORY. Add data-testid to every CTA, form input, and accordion trigger (e.g., data-testid='enroll-button', data-testid='faq-trigger-1')."
+  },
+  "instructions_to_main_agent": [
+    "You are building a high-converting kids education landing page for parents in Russian. The tone is trustworthy, modern, and fun.",
+    "Use standard HTML tags (section, div) for the main layout to allow creative asymmetry. Do NOT wrap the whole page in a standard Shadcn Card.",
+    "Implement 'Unbounded' font for headings via Google Fonts in the index.html or global css. Implement 'Manrope' for body.",
+    "Use Framer Motion for the hero elements and the floating Mascot.",
+    "Build a custom Marquee component using framer-motion or CSS animations to divide the Hero and the Benefits section.",
+    "For the Bento Grid, ensure it collapses cleanly to a 1-column stack on mobile (grid-cols-1). On desktop, use varied span sizes to avoid boring uniform squares.",
+    "For the Syllabus (10 weeks), use the Shadcn UI Accordion component but strip its default borders and give it a rounded-2xl background (e.g., bg-stone-100) with generous padding.",
+    "Never use generic placeholder images. Use the exact URLs provided in the 'image_urls' array."
+  ],
+  "UNIVERSAL GUIDELINES FOR MAIN AGENT": [
+    "Do not center-align the main app container. Left-align text for readability, center only specific hero headlines if visually balanced.",
+    "Never apply universal transitions (transition: all). Target specific properties (transition-colors, transition-transform).",
+    "Use 2-3x more spacing than feels normal. Generous padding makes the design feel premium.",
+    "No emojis as icons. Use Lucide-react.",
+    "Do NOT use transparent backgrounds on headers where content scrolls underneath. Use backdrop-blur-xl + bg-white/80.",
+    "Buttons should have modern pill-shaped or rounded-2xl styles with clear hover states."
+  ]
+}
