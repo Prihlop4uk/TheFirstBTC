@@ -24,3 +24,8 @@ backend/.env
 .DS_Store
 *.swp
 *.swo
+.env.*
+credentials.json
+*.pem
+*.key
+.credentials
