@@ -1,0 +1,16 @@
+{
+  "name": "thefirstbtc",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "lint": "eslint .",
+    "lint:md": "markdownlint \"**/*.md\""
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.20.0",
+    "eslint": "^9.20.0",
+    "globals": "^15.14.0",
+    "markdownlint-cli": "^0.41.0"
+  }
+}
