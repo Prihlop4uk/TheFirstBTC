@@ -8,22 +8,20 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            head: ['Unbounded', 'sans-serif'],
-            body: ['Manrope', 'sans-serif'],
-          },
-        },
-      },
-    };
-  </script>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body class="font-body antialiased bg-[#faf8f5] text-stone-900">
+
+  <!-- ============ TOAST NOTIFICATION (Вынесено под body для гарантированного отображения) ============ -->
+  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[99999] hidden flex items-center gap-3 rounded-2xl bg-stone-900 text-white px-6 py-4 shadow-2xl transition-all duration-300" data-testid="success-toast">
+    <span class="grid place-items-center w-8 h-8 rounded-full bg-emerald-500 shrink-0">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+    </span>
+    <div>
+      <p class="font-bold text-sm" data-toast-title>Заявка отправлена!</p>
+      <p class="text-stone-300 text-sm" data-toast-text>Мы свяжемся с вами в ближайшее время.</p>
+    </div>
+  </div>
 
   <!-- ============ HEADER ============ -->
   <header id="site-header" class="fixed top-0 inset-x-0 z-50 backdrop-blur-xl bg-white/80 border-b border-stone-200/70 transition-shadow">
@@ -60,22 +58,22 @@
   <span id="top"></span>
 
   <!-- ============ HERO ============ -->
-  <section id="about" class="grain relative overflow-hidden pt-[128px] pb-20 lg:pt-[168px] lg:pb-28">
+  <section id="about" class="grain relative overflow-hidden pt-[100px] pb-12 lg:pt-[130px] lg:pb-16">
     <div class="blob absolute -top-24 -right-24 w-[420px] h-[420px] rounded-full bg-orange-300"></div>
     <div class="blob absolute top-40 -left-32 w-[360px] h-[360px] rounded-full bg-amber-200"></div>
-    <div class="relative max-w-7xl mx-auto px-5 lg:px-8 grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+    <div class="relative max-w-7xl mx-auto px-5 lg:px-8 grid lg:grid-cols-12 gap-8 lg:gap-8 items-center">
       <div class="lg:col-span-7">
         <span class="reveal inline-flex items-center gap-2 rounded-full bg-white border border-stone-200 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-stone-600 shadow-sm">
           <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Набор открыт • 9–16 лет
         </span>
-        <h1 class="reveal font-head font-black tracking-tight text-4xl sm:text-5xl lg:text-[64px] leading-[1.05] mt-6">
+        <h1 class="reveal font-head font-black tracking-tight text-4xl sm:text-5xl lg:text-[64px] leading-[1.05] mt-4">
           Финансовая грамотность<br>и Биткойн <span class="text-orange-500">для детей</span>
         </h1>
-        <p class="reveal text-lg sm:text-xl text-stone-600 max-w-xl mt-6 leading-relaxed">
+        <p class="reveal text-lg sm:text-xl text-stone-600 max-w-xl mt-4 leading-relaxed">
           От «что такое деньги?» до первых Lightning-платежей — через игры, эксперименты и мини-проекты. Без инвестсоветов, только знания и навыки на всю жизнь.
         </p>
 
-        <div class="reveal flex flex-wrap items-center gap-4 mt-9">
+        <div class="reveal flex flex-wrap items-center gap-4 mt-6">
           <a href="#signup" class="btn inline-flex items-center gap-2 rounded-full bg-orange-500 hover:bg-orange-600 text-white font-bold text-lg px-8 py-4 shadow-xl shadow-orange-500/30" data-testid="hero-primary-cta">
             Записать ребёнка
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -83,16 +81,16 @@
           <a href="#program" class="btn inline-flex items-center rounded-full bg-white border border-stone-200 text-stone-800 font-bold text-lg px-8 py-4 hover:border-orange-300" data-testid="hero-secondary-cta">Смотреть программу</a>
         </div>
 
-        <dl class="reveal grid grid-cols-3 gap-4 max-w-lg mt-12">
-          <div class="rounded-3xl bg-white border border-stone-200 p-5">
+        <dl class="reveal grid grid-cols-3 gap-4 max-w-lg mt-8">
+          <div class="rounded-3xl bg-white border border-stone-200 p-4 sm:p-5">
             <dt class="font-head font-black text-3xl text-orange-500">10</dt>
             <dd class="text-sm text-stone-500 mt-1 font-medium">недель курса</dd>
           </div>
-          <div class="rounded-3xl bg-white border border-stone-200 p-5">
+          <div class="rounded-3xl bg-white border border-stone-200 p-4 sm:p-5">
             <dt class="font-head font-black text-3xl text-orange-500">9–16</dt>
             <dd class="text-sm text-stone-500 mt-1 font-medium">лет</dd>
           </div>
-          <div class="rounded-3xl bg-white border border-stone-200 p-5">
+          <div class="rounded-3xl bg-white border border-stone-200 p-4 sm:p-5">
             <dt class="font-head font-black text-2xl text-orange-500">⚡</dt>
             <dd class="text-sm text-stone-500 mt-1 font-medium">Lightning практика</dd>
           </div>
@@ -103,7 +101,7 @@
         <div class="relative mx-auto max-w-md">
           <div class="absolute inset-0 rounded-[3rem] bg-orange-500/10 rotate-6"></div>
           <div class="relative rounded-[3rem] overflow-hidden border border-stone-200 bg-amber-100 shadow-2xl shadow-orange-500/10">
-            <img src="https://images.pexels.com/photos/36847299/pexels-photo-36847299.png?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Сатоши — дружелюбный помощник курса" class="w-full h-[420px] object-cover float" data-testid="hero-mascot-img" />
+            <img src="images/assistent.png" alt="Сатоши — дружелюбный помощник курса" class="w-full h-[420px] object-cover float" data-testid="hero-mascot-img" />
           </div>
           <div class="float-slow absolute -bottom-5 -left-5 max-w-[230px] rounded-3xl bg-white border border-stone-200 shadow-xl p-4">
             <div class="flex items-center gap-2">
@@ -118,7 +116,7 @@
   </section>
 
   <!-- ============ MARQUEE ============ -->
-  <div class="marquee-wrap relative overflow-hidden bg-orange-500 py-4 -rotate-1 my-2">
+  <div class="marquee-wrap relative overflow-hidden bg-orange-500 py-3 -rotate-1 my-1">
     <div class="marquee items-center gap-6 text-white font-head font-bold text-lg whitespace-nowrap">
       <span>Bitcoin</span><span class="opacity-60">✦</span><span>Lightning</span><span class="opacity-60">✦</span><span>Финансовая грамотность</span><span class="opacity-60">✦</span><span>Безопасность</span><span class="opacity-60">✦</span><span>Критическое мышление</span><span class="opacity-60">✦</span>
       <span>Bitcoin</span><span class="opacity-60">✦</span><span>Lightning</span><span class="opacity-60">✦</span><span>Финансовая грамотность</span><span class="opacity-60">✦</span><span>Безопасность</span><span class="opacity-60">✦</span><span>Критическое мышление</span><span class="opacity-60">✦</span>
@@ -126,50 +124,50 @@
   </div>
 
   <!-- ============ BENEFITS BENTO ============ -->
-  <section id="benefits" class="py-20 lg:py-28">
+  <section id="benefits" class="py-12 lg:py-16">
     <div class="max-w-7xl mx-auto px-5 lg:px-8">
       <div class="reveal max-w-2xl">
         <span class="text-sm uppercase tracking-[0.2em] font-bold text-orange-500">Результат</span>
-        <h2 class="font-head font-bold text-3xl sm:text-4xl lg:text-5xl tracking-tight mt-3">Что ребёнок унесёт с собой</h2>
-        <p class="text-lg text-stone-600 mt-4">Не сухая теория, а навыки, которые пригодятся в реальной жизни.</p>
+        <h2 class="font-head font-bold text-3xl sm:text-4xl lg:text-5xl tracking-tight mt-2">Что ребёнок унесёт с собой</h2>
+        <p class="text-lg text-stone-600 mt-3">Не сухая теория, а навыки, которые пригодятся в реальной жизни.</p>
       </div>
 
-      <div class="grid lg:grid-cols-12 gap-5 mt-12">
-        <div class="reveal lift lg:col-span-8 rounded-[2rem] bg-amber-100 border border-amber-200 p-8 lg:p-12 flex flex-col justify-between min-h-[300px]">
-          <div class="grid place-items-center w-14 h-14 rounded-2xl bg-white text-orange-600">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9 9.5c0-1.4 1.3-2 3-2s3 .8 3 2-1.5 2-3 2-3 .6-3 2 1.3 2 3 2 3-.6 3-2"/></svg>
+      <div class="grid lg:grid-cols-12 gap-5 mt-8">
+        <div class="reveal lift lg:col-span-8 rounded-[2rem] bg-amber-100 border border-amber-200 p-6 lg:p-8 flex flex-col justify-between min-h-[260px]">
+          <div class="grid place-items-center w-12 h-12 rounded-2xl bg-white text-orange-600">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9 9.5c0-1.4 1.3-2 3-2s3 .8 3 2-1.5 2-3 2-3 .6-3 2 1.3 2 3 2 3-.6 3-2"/></svg>
           </div>
-          <div class="mt-8">
+          <div class="mt-6">
             <h3 class="font-head font-bold text-2xl lg:text-3xl">Понимание денег</h3>
-            <p class="text-stone-700 text-lg mt-3 max-w-lg">Что такое деньги, откуда берётся ценность, почему растут цены и где привычные деньги «ломаются». Ребёнок начинает мыслить критически.</p>
+            <p class="text-stone-700 text-lg mt-2 max-w-lg">Что такое деньги, откуда берётся ценность, почему растут цены и где привычные деньги «ломаются». Ребёнок начинает мыслить критически.</p>
           </div>
         </div>
 
-        <div class="reveal lift lg:col-span-4 rounded-[2rem] bg-emerald-100 border border-emerald-200 p-8 flex flex-col justify-between min-h-[300px]">
-          <div class="grid place-items-center w-14 h-14 rounded-2xl bg-white text-emerald-600">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V5z"/><path d="M9 12l2 2 4-4"/></svg>
+        <div class="reveal lift lg:col-span-4 rounded-[2rem] bg-emerald-100 border border-emerald-200 p-6 lg:p-8 flex flex-col justify-between min-h-[260px]">
+          <div class="grid place-items-center w-12 h-12 rounded-2xl bg-white text-emerald-600">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V5z"/><path d="M9 12l2 2 4-4"/></svg>
           </div>
-          <div class="mt-8">
+          <div class="mt-6">
             <h3 class="font-head font-bold text-2xl">Навыки безопасности</h3>
-            <p class="text-emerald-900/80 mt-3">Приватность, распознавание мошенничества и цифровая гигиена.</p>
+            <p class="text-emerald-900/80 mt-2">Приватность, распознавание мошенничества и цифровая гигиена.</p>
           </div>
         </div>
 
-        <div class="reveal lift lg:col-span-4 rounded-[2rem] bg-sky-100 border border-sky-200 p-8 flex flex-col justify-between min-h-[260px]">
-          <div class="grid place-items-center w-14 h-14 rounded-2xl bg-white text-sky-600">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v6M12 22v-6M4.9 4.9l4.2 4.2M14.9 14.9l4.2 4.2M2 12h6M22 12h-6"/></svg>
+        <div class="reveal lift lg:col-span-4 rounded-[2rem] bg-sky-100 border border-sky-200 p-6 lg:p-8 flex flex-col justify-between min-h-[240px]">
+          <div class="grid place-items-center w-12 h-12 rounded-2xl bg-white text-sky-600">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v6M12 22v-6M4.9 4.9l4.2 4.2M14.9 14.9l4.2 4.2M2 12h6M22 12h-6"/></svg>
           </div>
-          <div class="mt-8">
+          <div class="mt-6">
             <h3 class="font-head font-bold text-2xl">Практика</h3>
-            <p class="text-sky-900/80 mt-3">Игры, примеры из жизни и мини-проекты на каждом занятии.</p>
+            <p class="text-sky-900/80 mt-2">Игры, примеры из жизни и мини-проекты на каждом занятии.</p>
           </div>
         </div>
 
-        <div class="reveal lift lg:col-span-8 rounded-[2rem] bg-rose-100 border border-rose-200 p-8 lg:p-12 flex flex-col sm:flex-row items-center gap-8 min-h-[260px]">
-          <img src="https://images.pexels.com/photos/11114830/pexels-photo-11114830.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Ребёнок и копилка" class="w-full sm:w-56 h-48 object-cover rounded-3xl" data-testid="benefit-image" />
+        <div class="reveal lift lg:col-span-8 rounded-[2rem] bg-rose-100 border border-rose-200 p-6 lg:p-8 flex flex-col sm:flex-row items-center gap-6 min-h-[240px]">
+          <img src="images/piggy-bank.jpg" alt="Ребёнок и копилка" class="w-full sm:w-56 h-56 sm:h-44 object-cover object-[center_20%] rounded-3xl shrink-0" data-testid="benefit-image" />
           <div>
             <h3 class="font-head font-bold text-2xl lg:text-3xl">Ответственные решения</h3>
-            <p class="text-rose-900/80 text-lg mt-3">Умение проверять информацию, отличать ценность от цены и спокойно относиться к деньгам без FOMO и азарта.</p>
+            <p class="text-rose-900/80 text-lg mt-2">Умение проверять информацию, отличать ценность от цены и спокойно относиться к деньгам без FOMO и азарта.</p>
           </div>
         </div>
       </div>
@@ -177,20 +175,20 @@
   </section>
 
   <!-- ============ SATOSHI SECTION ============ -->
-  <section class="py-8 lg:py-12">
+  <section class="py-6 lg:py-10">
     <div class="max-w-7xl mx-auto px-5 lg:px-8">
       <div class="reveal rounded-[2.5rem] bg-stone-900 text-white overflow-hidden grid lg:grid-cols-12">
-        <div class="lg:col-span-4 relative bg-orange-500 grain min-h-[280px] grid place-items-center p-8">
+        <div class="lg:col-span-4 relative bg-orange-500 grain min-h-[240px] grid place-items-center p-6">
           <div class="text-center">
-            <div class="mx-auto grid place-items-center w-28 h-28 rounded-full bg-white text-orange-500 text-6xl font-head font-black shadow-2xl float">₿</div>
-            <p class="font-head font-bold text-2xl mt-5">Сатоши</p>
+            <div class="mx-auto grid place-items-center w-24 h-24 rounded-full bg-white text-orange-500 text-5xl font-head font-black shadow-2xl float">₿</div>
+            <p class="font-head font-bold text-2xl mt-4">Сатоши</p>
             <p class="text-white/80 text-sm">ваш проводник в мир денег</p>
           </div>
         </div>
-        <div class="lg:col-span-8 p-8 lg:p-12">
+        <div class="lg:col-span-8 p-6 lg:p-10">
           <h3 class="font-head font-bold text-2xl lg:text-3xl">С кем ребёнок будет учиться</h3>
-          <p class="text-stone-300 text-lg mt-3">Сатоши — дружелюбный помощник курса, который переводит сложные темы на понятный язык.</p>
-          <ul class="mt-8 space-y-4">
+          <p class="text-stone-300 text-lg mt-2">Сатоши — дружелюбный помощник курса, который переводит сложные темы на понятный язык.</p>
+          <ul class="mt-6 space-y-3">
             <li class="flex items-start gap-3"><span class="mt-1 grid place-items-center w-6 h-6 rounded-full bg-orange-500 text-white shrink-0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span><span class="text-stone-200">Задаю простые вопросы про деньги и помогаю найти ответы.</span></li>
             <li class="flex items-start gap-3"><span class="mt-1 grid place-items-center w-6 h-6 rounded-full bg-orange-500 text-white shrink-0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span><span class="text-stone-200">Показываю, как устроен Биткойн и почему это важно.</span></li>
             <li class="flex items-start gap-3"><span class="mt-1 grid place-items-center w-6 h-6 rounded-full bg-orange-500 text-white shrink-0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span><span class="text-stone-200">Напоминаю про безопасность в интернете и в кошельках.</span></li>
@@ -201,17 +199,17 @@
   </section>
 
   <!-- ============ PROGRAM ============ -->
-  <section id="program" class="py-20 lg:py-28">
+  <section id="program" class="py-12 lg:py-16">
     <div class="max-w-5xl mx-auto px-5 lg:px-8">
       <div class="reveal max-w-2xl">
         <span class="text-sm uppercase tracking-[0.2em] font-bold text-orange-500">Программа</span>
-        <h2 class="font-head font-bold text-3xl sm:text-4xl lg:text-5xl tracking-tight mt-3">10 недель — понятный путь</h2>
-        <p class="text-lg text-stone-600 mt-4">От базовых понятий к практике. Постепенное усложнение без перегруза.</p>
+        <h2 class="font-head font-bold text-3xl sm:text-4xl lg:text-5xl tracking-tight mt-2">10 недель — понятный путь</h2>
+        <p class="text-lg text-stone-600 mt-3">От базовых понятий к практике. Постепенное усложнение без перегруза.</p>
       </div>
 
-      <div id="syllabus" class="mt-12 space-y-3"></div>
+      <div id="syllabus" class="mt-8 space-y-3"></div>
 
-      <div class="reveal flex flex-wrap gap-4 mt-10">
+      <div class="reveal flex flex-wrap gap-4 mt-8">
         <a href="#signup" class="btn inline-flex items-center rounded-full bg-orange-500 hover:bg-orange-600 text-white font-bold px-8 py-4 shadow-xl shadow-orange-500/25" data-testid="program-cta">Получить доступ к курсу</a>
         <a href="#faq" class="btn inline-flex items-center rounded-full bg-white border border-stone-200 font-bold px-8 py-4 hover:border-orange-300" data-testid="program-faq-link">Частые вопросы</a>
       </div>
@@ -219,27 +217,27 @@
   </section>
 
   <!-- ============ FORMAT ============ -->
-  <section id="format" class="py-8 lg:py-12">
+  <section id="format" class="py-6 lg:py-10">
     <div class="max-w-7xl mx-auto px-5 lg:px-8">
-      <div class="grid lg:grid-cols-2 gap-10 items-center">
+      <div class="grid lg:grid-cols-2 gap-8 items-center">
         <div class="reveal rounded-[2.5rem] overflow-hidden border border-stone-200">
-          <img src="https://images.pexels.com/photos/4145069/pexels-photo-4145069.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Ребёнок учится с планшетом" class="w-full h-[420px] object-cover" data-testid="format-image" />
+          <img src="images/child-tablet.jpg" alt="Ребёнок учится с планшетом" class="w-full h-[400px] sm:h-[440px] lg:h-[460px] object-cover object-[center_30%]" data-testid="format-image" />
         </div>
         <div>
           <span class="reveal text-sm uppercase tracking-[0.2em] font-bold text-orange-500">Формат</span>
-          <h2 class="reveal font-head font-bold text-3xl sm:text-4xl tracking-tight mt-3">Удобно детям и родителям</h2>
-          <div class="mt-8 space-y-4">
-            <div class="reveal lift rounded-3xl bg-white border border-stone-200 p-6 flex items-start gap-4">
-              <span class="grid place-items-center w-12 h-12 rounded-2xl bg-amber-100 text-orange-600 shrink-0"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
-              <div><h4 class="font-head font-bold text-lg">10 недель, понятный ритм</h4><p class="text-stone-600 mt-1">Постепенное усложнение, без перегруза и скучных лекций.</p></div>
+          <h2 class="reveal font-head font-bold text-3xl sm:text-4xl tracking-tight mt-2">Удобно детям и родителям</h2>
+          <div class="mt-6 space-y-3">
+            <div class="reveal lift rounded-3xl bg-white border border-stone-200 p-5 flex items-start gap-4">
+              <span class="grid place-items-center w-11 h-11 rounded-2xl bg-amber-100 text-orange-600 shrink-0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+              <div><h4 class="font-head font-bold text-lg">10 недель, понятный ритм</h4><p class="text-stone-600 mt-1 text-sm sm:text-base">Постепенное усложнение, без перегруза и скучных лекций.</p></div>
             </div>
-            <div class="reveal lift rounded-3xl bg-white border border-stone-200 p-6 flex items-start gap-4">
-              <span class="grid place-items-center w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-600 shrink-0"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v6M4.9 4.9l4.2 4.2M2 12h6M12 22v-6M19.1 19.1l-4.2-4.2M22 12h-6"/></svg></span>
-              <div><h4 class="font-head font-bold text-lg">Практика на каждом занятии</h4><p class="text-stone-600 mt-1">Задания, обсуждения и безопасные эксперименты.</p></div>
+            <div class="reveal lift rounded-3xl bg-white border border-stone-200 p-5 flex items-start gap-4">
+              <span class="grid place-items-center w-11 h-11 rounded-2xl bg-emerald-100 text-emerald-600 shrink-0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v6M4.9 4.9l4.2 4.2M2 12h6M22 12h-6"/></svg></span>
+              <div><h4 class="font-head font-bold text-lg">Практика на каждом занятии</h4><p class="text-stone-600 mt-1 text-sm sm:text-base">Задания, обсуждения и безопасные эксперименты.</p></div>
             </div>
-            <div class="reveal lift rounded-3xl bg-white border border-stone-200 p-6 flex items-start gap-4">
-              <span class="grid place-items-center w-12 h-12 rounded-2xl bg-sky-100 text-sky-600 shrink-0"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 20h8M12 18v2"/></svg></span>
-              <div><h4 class="font-head font-bold text-lg">Онлайн / офлайн</h4><p class="text-stone-600 mt-1">Подстроимся под группу и удобный вам формат.</p></div>
+            <div class="reveal lift rounded-3xl bg-white border border-stone-200 p-5 flex items-start gap-4">
+              <span class="grid place-items-center w-11 h-11 rounded-2xl bg-sky-100 text-sky-600 shrink-0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 20h8M12 18v2"/></svg></span>
+              <div><h4 class="font-head font-bold text-lg">Онлайн / офлайн</h4><p class="text-stone-600 mt-1 text-sm sm:text-base">Подстроимся под группу и удобный вам формат.</p></div>
             </div>
           </div>
         </div>
@@ -248,54 +246,54 @@
   </section>
 
   <!-- ============ FAQ ============ -->
-  <section id="faq" class="py-20 lg:py-28">
+  <section id="faq" class="py-12 lg:py-16">
     <div class="max-w-4xl mx-auto px-5 lg:px-8">
       <div class="reveal max-w-2xl">
         <span class="text-sm uppercase tracking-[0.2em] font-bold text-orange-500">Вопросы родителей</span>
-        <h2 class="font-head font-bold text-3xl sm:text-4xl lg:text-5xl tracking-tight mt-3">Честные ответы</h2>
-        <p class="text-lg text-stone-600 mt-4">Мы заранее проговариваем, что курс делает и чего он точно не делает.</p>
+        <h2 class="font-head font-bold text-3xl sm:text-4xl lg:text-5xl tracking-tight mt-2">Честные ответы</h2>
+        <p class="text-lg text-stone-600 mt-3">Мы заранее проговариваем, что курс делает и чего он точно не делает.</p>
       </div>
-      <div id="faq-list" class="mt-10 space-y-3"></div>
+      <div id="faq-list" class="mt-8 space-y-3"></div>
     </div>
   </section>
 
   <!-- ============ SIGNUP ============ -->
-  <section id="signup" class="py-16 lg:py-24">
+  <section id="signup" class="py-10 lg:py-16">
     <div class="max-w-7xl mx-auto px-5 lg:px-8">
-      <div class="grain relative overflow-hidden rounded-[2.5rem] bg-stone-900 text-white p-8 sm:p-12 lg:p-16 grid lg:grid-cols-2 gap-12 items-center">
+      <div class="grain relative overflow-hidden rounded-[2.5rem] bg-stone-900 text-white p-6 sm:p-10 lg:p-12 grid lg:grid-cols-2 gap-8 items-center">
         <div class="blob absolute -top-16 -right-10 w-72 h-72 rounded-full bg-orange-500"></div>
         <div class="relative">
           <h2 class="font-head font-black text-3xl sm:text-4xl lg:text-5xl tracking-tight leading-tight">Запишите ребёнка на курс</h2>
-          <p class="text-stone-300 text-lg mt-5">Оставьте заявку — мы свяжемся с вами, расскажем про ближайший набор, формат и ответим на все вопросы.</p>
-          <ul class="mt-8 space-y-3 text-stone-200">
+          <p class="text-stone-300 text-lg mt-4">Оставьте заявку — мы свяжемся с вами, расскажем про ближайший набор, формат и ответим на все вопросы.</p>
+          <ul class="mt-6 space-y-3 text-stone-200">
             <li class="flex items-center gap-3"><span class="grid place-items-center w-6 h-6 rounded-full bg-emerald-500"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span> Без предоплаты и обязательств</li>
             <li class="flex items-center gap-3"><span class="grid place-items-center w-6 h-6 rounded-full bg-emerald-500"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span> Никаких инвестсоветов — только знания</li>
             <li class="flex items-center gap-3"><span class="grid place-items-center w-6 h-6 rounded-full bg-emerald-500"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span> Ответим в течение рабочего дня</li>
           </ul>
         </div>
         <div class="relative">
-          <form id="lead-form" class="rounded-[2rem] bg-white text-stone-900 p-7 sm:p-8 shadow-2xl" data-testid="lead-form">
+          <form id="lead-form" class="rounded-[2rem] bg-white text-stone-900 p-6 sm:p-7 shadow-2xl" data-testid="lead-form">
             <h3 class="font-head font-bold text-xl">Заявка на курс</h3>
             <div class="hp" aria-hidden="true">
               <label for="lf-website">Ваш сайт (не заполняйте)</label>
               <input id="lf-website" name="website" type="text" tabindex="-1" autocomplete="off" />
             </div>
-            <div class="mt-5 space-y-4">
+            <div class="mt-4 space-y-3">
               <div>
                 <label class="text-sm font-semibold text-stone-600" for="lf-name">Имя родителя</label>
-                <input id="lf-name" name="name" type="text" required placeholder="Как к вам обращаться" class="mt-2 w-full h-14 rounded-2xl bg-stone-100 border-none px-5 text-base outline-none focus:ring-2 focus:ring-orange-500" data-testid="lead-name-input" />
+                <input id="lf-name" name="name" type="text" required placeholder="Как к вам обращаться" class="mt-1.5 w-full h-12 rounded-2xl bg-stone-100 border-none px-4 text-base outline-none focus:ring-2 focus:ring-orange-500" data-testid="lead-name-input" />
               </div>
               <div>
                 <label class="text-sm font-semibold text-stone-600" for="lf-contact">Телефон или Telegram</label>
-                <input id="lf-contact" name="contact" type="text" required placeholder="+7 999 000-00-00 или @username" class="mt-2 w-full h-14 rounded-2xl bg-stone-100 border-none px-5 text-base outline-none focus:ring-2 focus:ring-orange-500" data-testid="lead-contact-input" />
+                <input id="lf-contact" name="contact" type="text" required placeholder="+7 999 000-00-00 или @username" class="mt-1.5 w-full h-12 rounded-2xl bg-stone-100 border-none px-4 text-base outline-none focus:ring-2 focus:ring-orange-500" data-testid="lead-contact-input" />
               </div>
               <div>
                 <label class="text-sm font-semibold text-stone-600" for="lf-age">Возраст ребёнка</label>
-                <input id="lf-age" name="age" type="text" placeholder="Например, 12 лет" class="mt-2 w-full h-14 rounded-2xl bg-stone-100 border-none px-5 text-base outline-none focus:ring-2 focus:ring-orange-500" data-testid="lead-age-input" />
+                <input id="lf-age" name="age" type="text" placeholder="Например, 12 лет" class="mt-1.5 w-full h-12 rounded-2xl bg-stone-100 border-none px-4 text-base outline-none focus:ring-2 focus:ring-orange-500" data-testid="lead-age-input" />
               </div>
             </div>
-            <button type="submit" class="btn w-full mt-6 rounded-full bg-orange-500 hover:bg-orange-600 text-white font-bold text-lg py-4 shadow-lg shadow-orange-500/25" data-testid="lead-submit">Отправить заявку</button>
-            <p class="text-xs text-stone-400 mt-4 text-center">Нажимая кнопку, вы соглашаетесь с <a href="privacy.html" class="underline hover:text-orange-500">политикой конфиденциальности</a>.</p>
+            <button type="submit" class="btn w-full mt-5 rounded-full bg-orange-500 hover:bg-orange-600 text-white font-bold text-lg py-3.5 shadow-lg shadow-orange-500/25" data-testid="lead-submit">Отправить заявку</button>
+            <p class="text-xs text-stone-400 mt-3 text-center">Нажимая кнопку, вы соглашаетесь с <a href="privacy.html" class="underline hover:text-orange-500">политикой конфиденциальности</a>.</p>
           </form>
         </div>
       </div>
@@ -303,36 +301,46 @@
   </section>
 
   <!-- ============ FOOTER ============ -->
-  <footer class="border-t border-stone-200 py-12">
-    <div class="max-w-7xl mx-auto px-5 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
-      <div class="flex items-center gap-3">
-        <span class="grid place-items-center w-10 h-10 rounded-xl bg-orange-500 text-white text-xl font-head font-black">₿</span>
-        <span class="font-head font-bold text-sm">Мой первый Биткоин Kids</span>
+  <footer class="relative z-10 border-t border-stone-200 py-8 bg-[#faf8f5]">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 flex flex-col items-center gap-4">
+      <div class="w-full flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <span class="grid place-items-center w-10 h-10 rounded-xl bg-orange-500 text-white text-xl font-head font-black">₿</span>
+          <span class="font-head font-bold text-sm">Мой первый Биткоин Kids</span>
+        </div>
+        <nav class="relative z-20 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-stone-500">
+          <a href="disclaimer.html" target="_blank" class="inline-block hover:text-orange-500 transition-colors py-1 px-0.5" data-testid="footer-disclaimer">Отказ от ответственности</a>
+          <a href="privacy.html" target="_blank" class="inline-block hover:text-orange-500 transition-colors py-1 px-0.5">Конфиденциальность</a>
+          <a href="offer.html" target="_blank" class="inline-block hover:text-orange-500 transition-colors py-1 px-0.5">Оферта</a>
+          <a href="cookies.html" target="_blank" class="inline-block hover:text-orange-500 transition-colors py-1 px-0.5">Cookies</a>
+          <a href="refunds.html" target="_blank" class="inline-block hover:text-orange-500 transition-colors py-1 px-0.5">Возвраты</a>
+        </nav>
+        <p class="relative z-10 text-sm text-stone-400">© <span id="year">2026</span> Все права защищены</p>
       </div>
-      <nav class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-stone-500">
-        <a href="disclaimer.html" class="hover:text-orange-500 transition-colors" data-testid="footer-disclaimer">Отказ от ответственности</a>
-        <a href="privacy.html" class="hover:text-orange-500 transition-colors">Конфиденциальность</a>
-        <a href="offer.html" class="hover:text-orange-500 transition-colors">Оферта</a>
-        <a href="cookies.html" class="hover:text-orange-500 transition-colors">Cookies</a>
-        <a href="refunds.html" class="hover:text-orange-500 transition-colors">Возвраты</a>
-      </nav>
-      <p class="text-sm text-stone-400">© <span id="year">2026</span> Все права защищены</p>
+
+      <!-- Уведомление о лицензии CC BY-SA 4.0 -->
+      <div class="w-full pt-4 border-t border-stone-200/60 text-center text-xs text-stone-500 leading-relaxed max-w-3xl">
+        Учебные материалы курса адаптированы на основе открытых материалов проекта 
+        <a href="https://github.com/MiPrimerBitcoin" target="_blank" rel="noopener noreferrer" class="underline hover:text-orange-500">Mi Primer Bitcoin</a> 
+        и распространяются по лицензии 
+        <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.ru" target="_blank" rel="noopener noreferrer" class="underline hover:text-orange-500">Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)</a>.
+      </div>
     </div>
   </footer>
 
   <!-- ============ CHAT ASSISTANT (Сатоши) ============ -->
-  <button id="chat-launcher" aria-label="Открыть чат с помощником Сатоши" class="fixed bottom-6 right-6 z-[70] group" data-testid="chat-launcher">
-    <span class="chat-pulse absolute inset-0 rounded-full bg-orange-500/40"></span>
-    <span class="relative grid place-items-center w-16 h-16 rounded-full bg-orange-500 shadow-2xl shadow-orange-500/40 overflow-hidden ring-4 ring-white btn">
-      <img src="https://images.pexels.com/photos/36847299/pexels-photo-36847299.png?auto=compress&cs=tinysrgb&dpr=2&h=200&w=200" alt="Сатоши" class="w-full h-full object-cover scale-125" />
+  <button id="chat-launcher" aria-label="Открыть чат с помощником Сатоши" class="fixed bottom-6 right-6 z-[70] group pointer-events-none" data-testid="chat-launcher">
+    <span class="chat-pulse absolute inset-0 rounded-full bg-orange-500/40 pointer-events-none"></span>
+    <span class="relative grid place-items-center w-16 h-16 rounded-full bg-orange-500 shadow-2xl shadow-orange-500/40 overflow-hidden ring-4 ring-white btn pointer-events-auto">
+      <img src="images/assistent.png" alt="Сатоши" class="w-full h-full object-cover scale-125" />
     </span>
-    <span class="absolute -top-1 -right-1 grid place-items-center w-6 h-6 rounded-full bg-emerald-500 text-white text-xs font-bold ring-2 ring-white">1</span>
+    <span class="absolute -top-1 -right-1 grid place-items-center w-6 h-6 rounded-full bg-emerald-500 text-white text-xs font-bold ring-2 ring-white pointer-events-auto">1</span>
   </button>
 
-  <div id="chat-panel" class="fixed bottom-24 right-6 z-[70] w-[calc(100vw-2rem)] sm:w-[380px] max-h-[70vh] rounded-[1.75rem] bg-white border border-stone-200 shadow-2xl shadow-stone-900/20 flex flex-col overflow-hidden origin-bottom-right hidden" data-testid="chat-panel">
+  <div id="chat-panel" class="fixed bottom-24 right-6 z-[70] w-[calc(100vw-2rem)] sm:w-[380px] max-h-[70vh] rounded-[1.75rem] bg-white border border-stone-200 shadow-2xl shadow-stone-900/20 flex flex-col overflow-hidden origin-bottom-right hidden pointer-events-auto" data-testid="chat-panel">
     <div class="flex items-center gap-3 p-4 bg-stone-900 text-white">
       <span class="grid place-items-center w-10 h-10 rounded-full bg-orange-500 overflow-hidden shrink-0">
-        <img src="https://images.pexels.com/photos/36847299/pexels-photo-36847299.png?auto=compress&cs=tinysrgb&dpr=2&h=120&w=120" alt="" class="w-full h-full object-cover scale-125" />
+        <img src="images/assistent.png" alt="Сатоши" class="w-full h-full object-cover scale-125" />
       </span>
       <div class="flex-1 min-w-0">
         <p class="font-head font-bold text-sm leading-tight">Сатоши</p>
@@ -352,17 +360,43 @@
     </form>
   </div>
 
-  <!-- Toast -->
-  <div id="toast" class="toast fixed bottom-6 left-1/2 -translate-x-1/2 z-[60] flex items-center gap-3 rounded-2xl bg-stone-900 text-white px-6 py-4 shadow-2xl" data-testid="success-toast">
-    <span class="grid place-items-center w-8 h-8 rounded-full bg-emerald-500 shrink-0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span>
-    <div>
-      <p class="font-bold text-sm" data-toast-title>Заявка отправлена!</p>
-      <p class="text-stone-300 text-sm" data-toast-text>Мы свяжемся с вами в ближайшее время.</p>
+  <!-- ============ COOKIE BANNER ============ -->
+  <div id="cookie-banner" class="fixed bottom-4 left-4 right-4 sm:left-6 sm:right-auto sm:max-w-md z-[100] hidden">
+    <div class="bg-stone-900/95 backdrop-blur-md text-white p-5 rounded-3xl shadow-2xl border border-stone-800 flex flex-col gap-3">
+      <div class="flex items-start gap-3">
+        <span class="text-xl">🍪</span>
+        <p class="text-xs sm:text-sm text-stone-300 leading-relaxed">
+          Мы используем файлы cookie для улучшения работы сайта и аналитики. Продолжая использовать сайт, вы соглашаетесь с нашей 
+          <a href="cookies.html" target="_blank" class="underline hover:text-orange-400 transition-colors">политикой использования cookies</a>.
+        </p>
+      </div>
+      <div class="flex items-center justify-end gap-2 mt-1">
+        <button id="cookie-accept" class="px-5 py-2 rounded-full bg-orange-500 hover:bg-orange-600 text-white font-bold text-xs transition-colors">
+          Понятно, согласен
+        </button>
+      </div>
     </div>
   </div>
 
   <script src="syllabus.js"></script>
   <script src="assistant.js"></script>
-  <script src="main.js"></script>
+  <script src="main.js?v=2.0"></script>
+
+  <!-- Скрипт Cookie-баннера -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cookieBanner = document.getElementById('cookie-banner');
+      const acceptBtn = document.getElementById('cookie-accept');
+
+      if (!localStorage.getItem('cookieConsent')) {
+        cookieBanner?.classList.remove('hidden');
+      }
+
+      acceptBtn?.addEventListener('click', () => {
+        localStorage.setItem('cookieConsent', 'true');
+        cookieBanner?.classList.add('hidden');
+      });
+    });
+  </script>
 </body>
 </html>
