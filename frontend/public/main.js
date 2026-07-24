@@ -33,12 +33,23 @@ const form = document.getElementById('lead-form');
 const toast = document.getElementById('toast');
 const toastTitle = toast?.querySelector('[data-toast-title]');
 const toastText = toast?.querySelector('[data-toast-text]');
+
 function showToast(title, text, ok = true) {
+  if (!toast) return;
+  
   if (toastTitle) toastTitle.textContent = title;
   if (toastText) toastText.textContent = text;
+  
+  // Управление стилем ошибки/успеха
   toast.classList.toggle('is-error', !ok);
-  toast.classList.add('show');
-  setTimeout(() => toast.classList.remove('show'), 4600);
+  
+  // Показываем тост (убираем hidden Tailwind)
+  toast.classList.remove('hidden');
+  
+  // Скрываем через 4.6 секунды
+  setTimeout(() => {
+    toast.classList.add('hidden');
+  }, 4600);
 }
 
 form?.addEventListener('submit', async (e) => {
@@ -48,27 +59,34 @@ form?.addEventListener('submit', async (e) => {
   const contact = form.querySelector('[name="contact"]').value.trim();
   const age = form.querySelector('[name="age"]').value.trim();
   const website = form.querySelector('[name="website"]').value;
+  
   if (!name || !contact) return;
 
   const original = submitBtn.textContent;
   submitBtn.disabled = true;
   submitBtn.textContent = 'Отправляем…';
+
   try {
     const res = await fetch('send.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, contact, age, website }),
     });
+
     if (res.status === 429) {
       showToast('Слишком много заявок', 'Пожалуйста, попробуйте немного позже.', false);
       return;
     }
+
     if (!res.ok) throw new Error('bad status ' + res.status);
-    const data = await res.json().catch(() => null);
-    if (!data || !data._id) throw new Error('unexpected response');
+
+    // Принимаем любой успешный JSON от send.php (главное, чтобы HTTP status был 200)
+    const data = await res.json().catch(() => ({}));
+
     form.reset();
     showToast('Заявка отправлена!', 'Мы свяжемся с вами в ближайшее время.', true);
   } catch (err) {
+    console.error('Ошибка отправки:', err);
     showToast('Не удалось отправить', 'Попробуйте ещё раз или напишите нам напрямую.', false);
   } finally {
     submitBtn.disabled = false;
